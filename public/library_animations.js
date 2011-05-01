@@ -135,7 +135,7 @@ function welcome() {
 				bouncing_ball();
 			},function() { 
 				clear_bg_images();
-				level5();
+				level1();
 			});
 		}
 	}

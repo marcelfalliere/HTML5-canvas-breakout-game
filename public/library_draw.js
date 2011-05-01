@@ -220,9 +220,6 @@ function draw_images() {
 	concat_images="";
 	for (i=0;i<images_full_path.length;i++) {
 		if (!images_loaded[i]) {
-			
-			console.log("draw an image in bg");
-		
 			concat_images+="<img src='"+IMAGES_PATH+images_full_path[i]+"' style='position:absolute;top:"+images_y[i]+"px;left:"+images_x[i]+"px;'/>";
 		}
 	}

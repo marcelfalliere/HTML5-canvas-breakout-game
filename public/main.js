@@ -24,8 +24,6 @@ var levels_name=["A simple start", "Double fountain of luv", "Never give up! Tru
 function main() {
 
 	
-	document.getElementById("contest").style.visibility="hidden";
-	document.getElementById("blog").style.visibility="hidden";
 
 	ctx = document.getElementById('canvas').getContext("2d");
 	 

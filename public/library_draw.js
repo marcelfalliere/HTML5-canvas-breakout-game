@@ -148,8 +148,8 @@ function draw_briques() {
 
 
 function draw_paddle() {
-	if (isPaddleGoingRight && paddlex+paddlew<WIDTH) paddlex += 5;
-	else if (isPaddleGoingLeft && paddlex>0) paddlex -= 5;
+	if (isPaddleGoingRight && paddlex+paddlew<WIDTH) paddlex += 1.5;
+	else if (isPaddleGoingLeft && paddlex>0) paddlex -= 1.5;
 
 	ctx.fillStyle = DEFAULT_PADDLE_COLOR;
 	ctx.beginPath();

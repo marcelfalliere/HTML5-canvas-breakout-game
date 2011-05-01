@@ -32,8 +32,10 @@ function credits() {
 	draw_images();
 	
 	// Afficher liens vers le contest et vers le blog
-	document.getElementById("contest").style.visibility="visible";
-	document.getElementById("blog").style.visibility="visible";
+	document.getElementById("contest").style.top=325+"px";
+	document.getElementById("contest").style.left=820+"px";
+	document.getElementById("blog").style.top=450+"px";
+	document.getElementById("blog").style.left=820+"px";
 	
 	// Barre
 	document.onkeydown = function (event) { 
@@ -133,7 +135,7 @@ function welcome() {
 				bouncing_ball();
 			},function() { 
 				clear_bg_images();
-				level1();
+				level5();
 			});
 		}
 	}

@@ -38,7 +38,7 @@ function do_fontain(m_x, m_y, modificateur) {
 			y.push(m_y);
 			r.push(DEFAULT_BALL_RAYON);
 			
-			dx.push(CERCLE_TRIGO_DX[i]*2);
-			dy.push(CERCLE_TRIGO_DY[i]*2*modificateur);
+			dx.push(CERCLE_TRIGO_DX[i]*frequency/2);
+			dy.push(CERCLE_TRIGO_DY[i]*(frequency/2)*modificateur);
 		}
 }

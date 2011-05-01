@@ -4,8 +4,6 @@ function level3() {
 
 function draw_level3() {
 	
-	// Pour ce niveau, la barre est un peu plus grande
-	paddlew=95;
 		
 	// Initialisation des briques destructibles
 	briques_x=[365];

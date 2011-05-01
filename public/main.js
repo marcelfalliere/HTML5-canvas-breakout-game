@@ -2,9 +2,6 @@
 var ctx;
 
 
-// Fréquence de rafraichissement (milisecondes)
-var frequency=3;
-
 // Niveau en cours
 var currentLevel=0;
 var previousLevel;

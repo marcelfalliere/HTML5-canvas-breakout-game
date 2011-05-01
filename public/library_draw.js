@@ -1,5 +1,8 @@
 
 
+// Fréquence de rafraichissement (milisecondes)
+var frequency=15;
+
 // Largeur et hauteur du canvas
 var WIDTH=800;
 var HEIGHT=600;
@@ -82,8 +85,8 @@ function default_ball() {
 	x = [400];
 	y = [550];
 	r = [DEFAULT_BALL_RAYON];
-	dx = [1];
-	dy = [2];
+	dx = [frequency*0.2];
+	dy = [frequency*0.4];
 }
 
 function default_paddle() {
@@ -148,8 +151,8 @@ function draw_briques() {
 
 
 function draw_paddle() {
-	if (isPaddleGoingRight && paddlex+paddlew<WIDTH) paddlex += 1.5;
-	else if (isPaddleGoingLeft && paddlex>0) paddlex -= 1.5;
+	if (isPaddleGoingRight && paddlex+paddlew<WIDTH) paddlex += frequency/3;
+	else if (isPaddleGoingLeft && paddlex>0) paddlex -= frequency/3;
 
 	ctx.fillStyle = DEFAULT_PADDLE_COLOR;
 	ctx.beginPath();

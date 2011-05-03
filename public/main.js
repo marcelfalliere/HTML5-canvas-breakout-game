@@ -42,6 +42,14 @@ function main() {
 		if (justFinishedALevel) {
 			justFinishedALevel=false;
 			
+			// Spécial
+			document.getElementById("contest").style.top=0+"px";
+			document.getElementById("contest").style.left=0+"px";
+			document.getElementById("contest").style.position="relative";
+			document.getElementById("blog").style.top=0+"px";
+			document.getElementById("blog").style.left=0+"px";
+			document.getElementById("blog").style.position="relative";
+					
 			// animation de fin de niveau
 			clearInterval(gameEventId);
 			clearInterval(welcomeBallId);

@@ -15,17 +15,26 @@ var welcomeBallId; // Boucle de bienvenue
 var transitionEffectId; // Boucle de transition
 
 // Tableau des noms de niveaux
-var levels_name=["A simple start", "Double fountain of luv", "Never give up! Trust your instincts!", "Bunker doesn't stant a chance", "A classic windows loading bar"];
+var levels_name=[	"Welcome",
+							
+							"A simple start", 
+							"Double fountain of luv", 
+							"Never give up! Trust your instincts!", 
+							"Bunker doesn't stand a chance", 
+							"A classic windows loading bar", 
+							
+							"Credit"];
 
 
 function main() {
 
-	
-
 	ctx = document.getElementById('canvas').getContext("2d");
 	 
+	 // initialisation de la "liste" des niveaux
+	 init_levels_bars(levels_name);
+	 
 	 // animation de début de jeu
-	 welcome();
+	 welcome(level1);
 	 
 	 // vérifie s'il vient d'y avoir lieu un changement de level
 	 mainEventId=window.setInterval(function () {

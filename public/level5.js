@@ -5,11 +5,8 @@ function level5() {
 function draw_level5() {
 	
 	// Surcharge
-	x = [400];
-	y = [550];
-	r = [DEFAULT_BALL_RAYON];
-	dx = [0.3];
-	dy = [2];
+	dx = [0.1];
+	dy = [5];
 		
 	// Initialisation des briques destructibles
 	briques_x=[0, 0, 0, 0];

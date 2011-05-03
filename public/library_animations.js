@@ -23,6 +23,7 @@ function credits() {
 	clearInterval(welcomeBallId);
 	clear();
 	clear_models();
+	init_background();
 	
 	// Images
 	images_full_path=["enjoyed.png", "end.png", "contest.png", "blog.png"];
@@ -34,8 +35,10 @@ function credits() {
 	// Afficher liens vers le contest et vers le blog
 	document.getElementById("contest").style.top=325+"px";
 	document.getElementById("contest").style.left=820+"px";
+	document.getElementById("contest").style.position="absolute";
 	document.getElementById("blog").style.top=450+"px";
 	document.getElementById("blog").style.left=820+"px";
+	document.getElementById("blog").style.position="absolute";
 	
 	// Barre
 	document.onkeydown = function (event) { 
@@ -51,7 +54,7 @@ function credits() {
 	default_ball();
 	draw_ball_or_balls();
 	
-	display_level("(-1)^(1/2)", "Thanks your for playing");
+	display_level(levels_name.length-1, "Thanks your for playing");
 	
 	// Boucle du welcome pour la petite animation
 	welcomeBallId=window.setInterval(function() {
@@ -64,7 +67,7 @@ function credits() {
 }
 
 // "Level" d'accueil
-function welcome() {
+function welcome(first_level) {
 	
 	display_level(0, "Welcome");
 	
@@ -77,6 +80,7 @@ function welcome() {
 	
 	// Balle principale
 	default_ball();
+	default_paddle();
 	
 	// Initialisation des briques autour du logo
 	briques_destroyed=[false, false, false, false, false, false, false, false, false, false, false];
@@ -135,7 +139,7 @@ function welcome() {
 				bouncing_ball();
 			},function() { 
 				clear_bg_images();
-				level1();
+				first_level();
 			});
 		}
 	}

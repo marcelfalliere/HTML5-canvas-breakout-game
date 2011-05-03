@@ -95,8 +95,22 @@ function default_paddle() {
 	paddlew=75;
 }
 
-function clear() { ctx.clearRect(0, 0, WIDTH, HEIGHT); }
-function clear_bg_images() { document.getElementById("canvas-bg-images").innerHTML=""; }
+function clear() { 
+	ctx.clearRect(0, 0, WIDTH, HEIGHT); 
+}
+function clear_bg_images() { 
+	document.getElementById("canvas-bg-images").innerHTML=""; 
+}
+
+function init_background() {
+	
+	if (no_lights) {
+		console.log(document.getElementById("canvas"));
+		document.getElementById("canvas").style.backgroundColor =DEFAULT_PADDLE_COLOR;
+	} else {
+		document.getElementById("canvas").style.backgroundColor ="transparent";
+	}
+}
 
 // Dessine les balles et déplaces leur coordonnées
 // pour le prochain mouvement
@@ -151,14 +165,23 @@ function draw_briques() {
 
 
 function draw_paddle() {
-	if (isPaddleGoingRight && paddlex+paddlew<WIDTH) paddlex += frequency/3;
-	else if (isPaddleGoingLeft && paddlex>0) paddlex -= frequency/3;
+	if (isPaddleGoingRight && paddlex+paddlew<WIDTH) { paddlex += frequency/2.5; isPaddleGoingLeft=false; }
+	else if (isPaddleGoingLeft && paddlex>0) { paddlex -= frequency/2.5; isPaddleGoingRight=false; }
 
 	ctx.fillStyle = DEFAULT_PADDLE_COLOR;
 	ctx.beginPath();
-	ctx.rect(paddlex,HEIGHT-paddleh,paddlew,paddleh);
+	ctx.rect(paddlex,HEIGHT-paddleh+5,paddlew,paddleh-5);
 	ctx.closePath();
 	ctx.fill();
+	
+	ctx.fillStyle = DEFAULT_PADDLE_COLOR;
+	ctx.beginPath();
+	ctx.moveTo(paddlex, HEIGHT-paddleh+5);
+	ctx.quadraticCurveTo( paddlex+paddlew/2, HEIGHT-paddleh-5, paddlex+paddlew, HEIGHT-paddleh+5  );
+	
+	ctx.closePath();
+	ctx.fill();
+
 	
 }
 

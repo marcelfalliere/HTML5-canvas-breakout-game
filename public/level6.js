@@ -4,44 +4,32 @@ function level6() {
 
 function draw_level6() {
 	
-	no_lights=false;
+	no_lights=true;
+	
+	// Surcharge
+	dx = [1];
+	dy = [4];
 	
 	// Initialisation des briques destructibles
-	briques_x=[375];
-	briques_y=[270];
-	briques_h= [std_brique_h*6-20];
-	briques_w=[std_brique_w*2-20];
-	briques_colors=[std_brique_color];
-	briques_destroyed=[false];
-	
-	// Initialisation des briques indestructibles
-	unb_briques_x=[335, 365, 395, 425, 335, 365, 395, 425, 335, 335, 425, 425];
-	unb_briques_y=[230, 230, 230, 230, 320, 320, 320, 320, 260, 290, 260, 290];
-	
-	for(i=0;i<unb_briques_x.length;i++) {
-		unb_briques_w[i]=30;
-		unb_briques_h[i]=30;
-		unb_briques_lives[i]=DEFAULT_NB_LIVES*2;
-		unb_briques_colors[i]=DEFAULT_UNBREAKABLE_COLOR;
-		unb_briques_last_impact_ts[i]=(new Date()).getTime();
+	// Initialisation des briques destructibles
+	briques_x=[60, 180, 300, 420, 540, 660,60, 180, 300, 420, 540, 660, 60, 180, 300, 420, 540, 660, 60, 180, 300, 420, 540, 660];
+	briques_y=[100, 100, 100, 100, 100, 100,300, 300, 300, 300, 300, 300, 200, 200, 200, 200, 200, 200, 400, 400, 400, 400, 400, 400];
+	for(i=0;i<briques_x.length;i++) {
+		briques_h[i]=std_brique_h*4;
+		briques_w[i]=std_brique_w*2;
+		briques_y[i]-=50;
+		briques_colors[i]=std_brique_color;
+		briques_destroyed[i]=false;
 	}
 	
-	// Bonus ... droping bombes =)
-	bonuses_x=[60, 180, 300, 420, 540, 660];
-	for(i=0;i<bonuses_x.length;i++) {
-		bonuses_x[i]=bonuses_x[i]+40;
-		bonuses_used[i]=false;
-		bonuses_y[i]=60;
-		bonuses_type[i]=FONTAIN_OF_BALL;
-		bonuses_finished[i]=false;
-	}
 	
 	
 	// Images de fonds
-	/*images_full_path=["look.png", "rofl.png", "focus.png", "go.png"];
-	images_x=[34, 161, 294, 714];
-	images_y=[71, 13, 95, 90];
-	images_loaded=[false, false, false, false];*/
+	images_full_path=["where.png", "youarealone.png", "alonein.png", "dark.png", "the.png"];
+	images_x=[376, 43, 445, , 279, 48];
+	images_y=[519, 427, 300, 90, 196, 90];
+	images_loaded=[false, false, false, false];
+	
 	
 }
 

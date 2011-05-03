@@ -1,37 +1,3 @@
- 
-// A faire dans tout les niveau, à chaque passage de la boucle d'event
-function main_level() {
-	clear();
-	
-	// Vérification : est-ce que j'ai gagné ??
-	if (is_there_only_true_in_this_table(briques_destroyed) && is_there_only_true_in_this_table(bonuses_finished) && !justWon) {
-		justWon=true;
-		window.setTimeout(function() {
-			animationStarted=true;
-			justFinishedALevel=true;
-			currentLevel=previousLevel+1;
-		}, 1000);
-	} else {
-		
-		// Vérifications de la collision de la balle avec les rebords et la barre
-		check_collision_balls_borders_paddle();
-		// Vérification de collisions de(s) la(les) balle(s) avec les briques desctructibles
-		check_collision_balls_bricks();
-		// Vérifications de la collision de la balle avec un bonus (oh yeah)
-		check_collision_balls_bonus();
-		// Briques indestructibles
-		check_collision_balls_indestructibles_bricks()
-		
-		// Balle principale, et les autres
-		draw_ball_or_balls();
-		// Barre
-		draw_paddle();
-		// Briques destructibles
-		draw_briques();
-		// Bonus des balles fontaines
-		draw_bonuses();
-	}
-}
 
 
 function check_collision_balls_borders_paddle() {
@@ -50,7 +16,6 @@ function check_collision_balls_borders_paddle() {
 					mod=0;
 					if (d!=0) { mod=(Math.pow(d,2)/400)*(d/Math.abs(d)); }
 					dx[j] = dx[j] + 2*mod;
-					console.log(mod);
 					dy[j] = -dy[j];
 				}
 				
@@ -79,7 +44,6 @@ function check_collision_only_paddle() {
 					mod=0;
 					if (d!=0) { mod=(Math.pow(d,2)/400)*(d/Math.abs(d)); }
 					dx[j] = dx[j] + 2*mod;
-					console.log(mod);
 					dy[j] = -dy[j];
 				}
 				

@@ -22,6 +22,9 @@ var BONUS_RAYON_AURA_1=25;
 var BONUS_RAYON_AURA_2=27;
 var DEFAULT_UNBREAKABLE_COLOR = "#231F20";
 var DEFAULT_UNBREAKABLE_LIVES_COLOR = "#FFFFFF";
+var DEFAULT_NO_LIGHTS_COLOR="#222222"
+var DEFAULT_NO_LIGHTS_COLOR_PADDLE="#BD2031"
+
 
 // Balle principale
 var balls_lost = [false];
@@ -102,13 +105,117 @@ function clear_bg_images() {
 	document.getElementById("canvas-bg-images").innerHTML=""; 
 }
 
-function init_background() {
+function circle(x, y, r, c) {
+    ctx.beginPath();
+    var rad = ctx.createRadialGradient(x, y, 1, x, y, r);
+    rad.addColorStop(0, 'rgba(242,181,147, 0.1)');
+	rad.addColorStop(1, DEFAULT_NO_LIGHTS_COLOR)
+    ctx.fillStyle = rad;
+    ctx.rect(x-r, y-r, r*2, r*2);
+    ctx.fill();
+}
+
+function draw_background() {
 	
 	if (no_lights) {
-		console.log(document.getElementById("canvas"));
-		document.getElementById("canvas").style.backgroundColor =DEFAULT_PADDLE_COLOR;
+		
+		aura=100;
+		
+		for(i=0;i<balls_lost.length;i++) {
+			if (!balls_lost[i]) {
+				// Top
+				ctx.fillStyle = DEFAULT_NO_LIGHTS_COLOR;
+				ctx.beginPath();
+				ctx.rect(0,0,WIDTH,y[i]-aura);
+				ctx.closePath();
+				ctx.fill();
+				// Bottom
+				ctx.fillStyle = DEFAULT_NO_LIGHTS_COLOR;
+				ctx.beginPath();
+				ctx.rect(0,y[i]+aura,WIDTH, HEIGHT-y[i]+aura);
+				ctx.closePath();
+				ctx.fill();
+				// Left
+				ctx.fillStyle = DEFAULT_NO_LIGHTS_COLOR;
+				ctx.beginPath();
+				ctx.rect(0,y[i]-aura,x[i]-aura+0.9, aura*2);
+				ctx.closePath();
+				ctx.fill();
+				// Right
+				ctx.fillStyle = DEFAULT_NO_LIGHTS_COLOR;
+				ctx.beginPath();
+				ctx.rect(x[i]+aura,y[i]-aura,WIDTH-x[i]+aura, aura*2);
+				ctx.closePath();
+				ctx.fill();
+				// Bezou car petit pb d'affichage
+				//Bezout en haut à droit
+				ctx.moveTo(x[i], y[i]-aura);
+				ctx.quadraticCurveTo(x[i]+aura, y[i]-aura, x[i]+aura, y[i]);
+				ctx.quadraticCurveTo(x[i]+aura, y[i]-aura, x[i]+aura, y[i]-aura);
+				ctx.quadraticCurveTo(x[i], y[i]-aura, x[i], y[i]-aura);
+				//Bezout en haut à gauche
+				ctx.moveTo(x[i], y[i]-aura);
+				ctx.quadraticCurveTo(x[i]-aura, y[i]-aura, x[i]-aura, y[i]);
+				ctx.quadraticCurveTo(x[i]-aura, y[i]-aura, x[i]-aura, y[i]-aura);
+				ctx.quadraticCurveTo(x[i], y[i]-aura, x[i], y[i]-aura);
+				//Bezout en bas à gauche
+				ctx.moveTo(x[i], y[i]+aura);
+				ctx.quadraticCurveTo(x[i]-aura, y[i]+aura, x[i]-aura, y[i]);
+				ctx.quadraticCurveTo(x[i]-aura, y[i]+aura, x[i]-aura, y[i]+aura);
+				ctx.quadraticCurveTo(x[i], y[i]+aura, x[i], y[i]+aura);
+				//Bezout en bas à gauche
+				ctx.moveTo(x[i], y[i]+aura);
+				ctx.quadraticCurveTo(x[i]+aura, y[i]+aura, x[i]+aura, y[i]);
+				ctx.quadraticCurveTo(x[i]+aura, y[i]+aura, x[i]+aura, y[i]+aura);
+				ctx.quadraticCurveTo(x[i], y[i]+aura, x[i], y[i]+aura);
+				// FIn
+				ctx.fillStyle = DEFAULT_NO_LIGHTS_COLOR;
+				ctx.fill();
+				
+				
+				circle(x[i], y[i], aura, "255, 255, 150")
+			}
+		}
+		
+	
+		ctx.fillStyle = DEFAULT_NO_LIGHTS_COLOR_PADDLE;
+		ctx.beginPath();
+		ctx.rect(paddlex-1,HEIGHT-paddleh-1+5,2,2);
+		ctx.closePath();
+		ctx.fill();
+		
+		ctx.fillStyle = DEFAULT_NO_LIGHTS_COLOR_PADDLE;
+		ctx.beginPath();
+		ctx.rect(paddlex-1+20,HEIGHT-paddleh-1+1,2,2);
+		ctx.closePath();
+		ctx.fill();
+		
+		ctx.fillStyle = DEFAULT_NO_LIGHTS_COLOR_PADDLE;
+		ctx.beginPath();
+		ctx.rect((paddlew/2)+paddlex-1+20,HEIGHT-paddleh-1+1,2,2);
+		ctx.closePath();
+		ctx.fill();
+		
+		ctx.fillStyle = DEFAULT_NO_LIGHTS_COLOR_PADDLE;
+		ctx.beginPath();
+		ctx.rect(paddlew+paddlex-1,HEIGHT-paddleh-1+5,2,2);
+		ctx.closePath();
+		ctx.fill();
+		
+		ctx.fillStyle = DEFAULT_NO_LIGHTS_COLOR_PADDLE;
+		ctx.beginPath();
+		ctx.rect((paddlew/2)+paddlex-1,HEIGHT-paddleh-1,2,2);
+		ctx.closePath();
+		ctx.fill();
+
+
+		
 	} else {
-		document.getElementById("canvas").style.backgroundColor ="transparent";
+		ctx.fillStyle = "transparent";
+		ctx.beginPath();
+		ctx.rect(0,0,WIDTH,HEIGHT);
+		ctx.closePath();
+		ctx.fill();
 	}
 }
 

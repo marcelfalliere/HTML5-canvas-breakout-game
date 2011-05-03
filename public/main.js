@@ -15,15 +15,16 @@ var welcomeBallId; // Boucle de bienvenue
 var transitionEffectId; // Boucle de transition
 
 // Tableau des noms de niveaux
-var levels_name=[	"Welcome",
+var levels_name=[	"Training ground",
 							
 							"A simple start", 
 							"Double fountain of luv", 
 							"Never give up! Trust your instincts!", 
 							"Bunker doesn't stand a chance", 
 							"A classic windows loading bar", 
+							"Who turned the light off?",
 							
-							"Credit"];
+							"Final boss"];
 
 
 function main() {
@@ -49,11 +50,13 @@ function main() {
 				},function() { 
 					clear();
 					switch(currentLevel) {
+					case 0: welcome(); break;
 					case 1: level1(); break;
 					case 2: level2(); break;
 					case 3: level3(); break;
 					case 4: level4(); break;
 					case 5: level5(); break;
+					case 6: level6(); break;
 					default:
 						credits();
 						break;

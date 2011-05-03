@@ -18,12 +18,11 @@ function bouncing_ball() {
 // "Level" des credits
 function credits() {
 	clear_bg_images();
-	clearInterval(mainEventId);
 	clearInterval(gameEventId);
 	clearInterval(welcomeBallId);
 	clear();
 	clear_models();
-	init_background();
+	draw_background();
 	
 	// Images
 	images_full_path=["enjoyed.png", "end.png", "contest.png", "blog.png"];
@@ -68,8 +67,13 @@ function credits() {
 
 // "Level" d'accueil
 function welcome(first_level) {
+	clear_bg_images();
+	clearInterval(gameEventId);
+	clearInterval(welcomeBallId);
+	clear();
+	clear_models();
 	
-	display_level(0, "Welcome");
+	display_level(0, "Training ground");
 	
 	// Images
 	images_full_path=["welcome_title.png", "controls.png", "objectives.png"];

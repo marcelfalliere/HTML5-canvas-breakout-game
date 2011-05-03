@@ -143,7 +143,7 @@ function welcome(first_level) {
 				bouncing_ball();
 			},function() { 
 				clear_bg_images();
-				first_level();
+				level();
 			});
 		}
 	}

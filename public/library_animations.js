@@ -118,7 +118,6 @@ function welcome(first_level) {
 	
 	// Controles
 	document.onmousemove  = function(event) {
-		console.log("mousemove");
 		if (event.pageX > 10+(paddlew/2) && event.pageX < 10+WIDTH-(paddlew/2)) {
 			paddlex = event.pageX - 10	- (paddlew/2);
 		}

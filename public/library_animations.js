@@ -40,14 +40,8 @@ function credits() {
 	document.getElementById("blog").style.position="absolute";
 	
 	// Barre
-	document.onkeydown = function (event) { 
-		isPaddleGoingRight=event.keyCode==39;
-		isPaddleGoingLeft=event.keyCode==37;
-	}
-	document.onkeyup = function (event) {
-		if (event.keyCode==39 ) { isPaddleGoingRight=false; }
-		if (event.keyCode==37 ) { isPaddleGoingLeft=false; }	
-	}
+	
+	
 	
 	// Balle par defaut
 	default_ball();
@@ -122,31 +116,32 @@ function welcome(first_level) {
 	}, frequency);
 	
 	
-	// Paddle
-	document.onkeydown = function (event) { 
-		isPaddleGoingRight=event.keyCode==39;
-		isPaddleGoingLeft=event.keyCode==37;
-	}
-	
-	document.onkeyup = function (event) {
-	 
-		if (event.keyCode==39 ) { isPaddleGoingRight=false; }
-		if (event.keyCode==37 ) { isPaddleGoingLeft=false; }
-		
-		// Enter is pressed : goto (lawl) to first level
-		if(event.keyCode==13) {
-			
-			clearInterval(welcomeBallId);
-		
-			transitionEffect(true, 
-			function() { 
-				bouncing_ball();
-			},function() { 
-				clear_bg_images();
-				level1();
-			});
+	// Controles
+	document.onmousemove  = function(event) {
+		console.log("mousemove");
+		if (event.pageX > 10+(paddlew/2) && event.pageX < 10+WIDTH-(paddlew/2)) {
+			paddlex = event.pageX - 10	- (paddlew/2);
 		}
 	}
+	
+	
+	// Début du jeu
+	document.getElementById("canvas").onclick  = function(event) {
+		clearInterval(welcomeBallId);
+		transitionEffect(true, 
+		function() { 
+			bouncing_ball();
+		},function() { 
+			clear_bg_images();
+			level1();
+		});
+			
+		// Annulation des actions	
+		document.onkeydown = function (event) { }
+		document.onkeyup = function (event) { }
+		document.getElementById("canvas").onclick  = function(event) { }
+	}
+	
 	
 }
 

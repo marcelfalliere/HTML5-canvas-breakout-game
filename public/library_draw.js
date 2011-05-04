@@ -8,11 +8,6 @@ var WIDTH=800;
 var HEIGHT=600;
 
 
-// Mouvement de la bare principale
-var isPaddleGoingRight=false;
-var isPaddleGoingLeft=false;
-
-
 // Constante (mais bon c'est du js...)
 var DEFAULT_BALL_COLOR = "#BD2031";
 var DEFAULT_BALL_RAYON = 10;
@@ -89,7 +84,7 @@ function default_ball() {
 	y = [550];
 	r = [DEFAULT_BALL_RAYON];
 	dx = [frequency*0.2];
-	dy = [frequency*0.4];
+	dy = [-frequency*0.4];
 }
 
 function default_paddle() {
@@ -272,9 +267,7 @@ function draw_briques() {
 
 
 function draw_paddle() {
-	if (isPaddleGoingRight && paddlex+paddlew<WIDTH) { paddlex += frequency/2.5; isPaddleGoingLeft=false; }
-	else if (isPaddleGoingLeft && paddlex>0) { paddlex -= frequency/2.5; isPaddleGoingRight=false; }
-
+	
 	ctx.fillStyle = DEFAULT_PADDLE_COLOR;
 	ctx.beginPath();
 	ctx.rect(paddlex,HEIGHT-paddleh+5,paddlew,paddleh-5);

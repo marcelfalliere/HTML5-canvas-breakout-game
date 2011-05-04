@@ -5,6 +5,8 @@ function level4() {
 function draw_level4() {
 	
 	
+	dx = [0.1];
+	
 	// Initialisation des briques destructibles
 	briques_x=[375];
 	briques_y=[270];

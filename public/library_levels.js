@@ -15,31 +15,23 @@ function level_x(i, draw_function) {
 	draw_function();  
 	after_draw_level();
 	
-	document.onkeyup = function (event) {
-		if(event.keyCode==13) { 
-			// Le jeu commence !
-			gameEventId = window.setInterval("main_level()", frequency);
-			isPaddleGoingLeft=false;
-			isPaddleGoingRight=false;
-			
-			// Surcharge du onkeydown et onkeyup sur le document
-			document.onkeydown = function (event) { 
-				isPaddleGoingRight=event.keyCode==39;
-				isPaddleGoingLeft=event.keyCode==37;
-				
-				if (isPaddleGoingRight) { isPaddleGoingLeft=false; }
-				if (isPaddleGoingLeft) { isPaddleGoingRight=false; }
-			}
-			document.onkeyup = function (event) { 
-				if (event.keyCode==39 ) { isPaddleGoingRight=false; isPaddleGoingLeft=false; }
-				if (event.keyCode==37 ) { isPaddleGoingLeft=false; isPaddleGoingRight=false; }
-				
-			}
-			
-		} 
-	};
 	
-
+	document.onmousemove  = function(event) {
+		console.log("mousemove");
+		if (event.pageX > 10+(paddlew/2) && event.pageX < 10+WIDTH-(paddlew/2)) {
+			paddlex = event.pageX - 10	- (paddlew/2);
+		}
+	}
+	document.getElementById("canvas").onclick  = function(event) {
+		// Le jeu commence !
+		gameEventId = window.setInterval("main_level()", frequency);
+			
+		// Annulation des actions	
+		document.onkeydown = function (event) { }
+		document.onkeyup = function (event) { }
+		document.getElementById("canvas").onclick  = function(event) { }
+	}
+	
 }
 
 function before_draw_level() {
@@ -151,6 +143,7 @@ function clear_models() {
 	bonuses_x=[];
 	bonuses_y=[];
 	bonuses_type=[];
+	bonuses_finished = [];
 	
 	images_full_path=[];
 	images_x=[];

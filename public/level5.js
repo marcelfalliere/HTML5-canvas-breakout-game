@@ -6,7 +6,6 @@ function draw_level5() {
 	
 	// Surcharge
 	dx = [0.1];
-	dy = [5];
 		
 	// Initialisation des briques destructibles
 	briques_x=[0, 0, 0, 0];

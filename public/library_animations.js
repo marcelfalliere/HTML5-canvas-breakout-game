@@ -70,10 +70,10 @@ function welcome(first_level) {
 	display_level(0, "Training ground");
 	
 	// Images
-	images_full_path=["welcome_title.png", "controls.png", "objectives.png"];
-	images_x=[55, 30, 610];
-	images_y=[62, 200, 200];
-	images_loaded=[false, false, false];
+	images_full_path=["welcome_title.png", "objectives.png", "mouse.png", "click.png", "angles.png", "read.png", "changelevel.png"];
+	images_x=[55, 610, 36, 56, 23, 46, 620];
+	images_y=[62, 200, 239, 316, 367, 456, 500];
+	images_loaded=[false, false];
 	draw_images();
 	
 	// Balle principale
